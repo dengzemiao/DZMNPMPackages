@@ -1,0 +1,15 @@
+{
+  "name": "dzm-editor",
+  "version": "1.0.0",
+  "description": "基于 CKEditor 进行自定义编辑器封装，支持 WPS 贴贴文案图片，后续功能在持续增加...",
+  "main": "ckeditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/dengzemiao/DZMEditor",
+  "keywords": [
+    "CKEditor"
+  ],
+  "author": "DZM",
+  "license": "ISC"
+}
