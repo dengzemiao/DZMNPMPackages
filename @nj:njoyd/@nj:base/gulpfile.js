@@ -20,7 +20,7 @@ gulp.task('clean', function () {
 // 打包 JS 任务
 gulp.task('build', function () {
   return gulp
-    .src('./js/*.js')               // 定位需要压缩的 JS 文件
+    .src('./src/*.js')               // 定位需要压缩的 JS 文件
     // .pipe(babel({                // ES6 转 ES5，看需求而定
     //   presets: ['@babel/env']
     // }))
@@ -40,12 +40,12 @@ gulp.task('build', function () {
 // })
 gulp.task('move1', function () {
   return gulp
-    .src('./js/package.json')
+    .src('./src/package.json')
     .pipe(gulp.dest('./dist/'))
 })
 gulp.task('move2', function () {
   return gulp
-    .src('./js/index.d.ts')
+    .src('./src/index.d.ts')
     .pipe(gulp.dest('./dist/'))
 })
 
