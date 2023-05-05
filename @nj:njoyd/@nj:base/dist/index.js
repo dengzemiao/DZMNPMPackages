@@ -1,1 +1,1 @@
-const dzmName="dzm",dzmAge=18;function dzmFunc(m,d){return`名字：${m}，年龄：`+d}export{dzmName,dzmAge,dzmFunc};
+const name="base",age=18;function baseFunc(e,n){return`名字：${e}，年龄：`+n}export{name,age,baseFunc};

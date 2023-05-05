@@ -1,8 +1,8 @@
-// 测试属性
-export const dzmName = 'dzm'
-export const dzmAge = 18
+// 属性
+export const name = 'base'
+export const age = 18
 
-// 测试方法
-export function dzmFunc (name, age) {
+// 方法
+export function baseFunc(name, age) {
   return `名字：${name}，年龄：${age}`
 }
