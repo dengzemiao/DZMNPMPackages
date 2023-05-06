@@ -5,7 +5,7 @@
     "publish:build": "npm run build && cd dist/ && npm publish",
     "publish:cnj": "nrm use cnj && npm run build && cd dist/ && npm publish",
     "publish:ctt": "nrm use cnj && npm run build && cd dist/ && npm publish && nrm use ctt",
-    "publish:npm": "nrm use cnj && npm run build && cd dist/ && npm publish && nrm use npm"
+    "publish:npm": "nrm use npm && npm run build && cd dist/ && npm publish"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
