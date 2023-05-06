@@ -1,4 +1,4 @@
-# @nj/base
+# @nj/utils
 
 ## 一、使用
 
@@ -15,17 +15,17 @@
   ```
 
   ```sh
-  $ npm i @nj/base
+  $ npm i @nj/utils
   ```
 
 - 引入
 
   ```javascript
   // 方式一
-  import * as Base from "@nj/base";
+  import * as Utils from "@nj/utils";
 
   // 方式二
-  import { xxx, xxx, xxx } from "@nj/base";
+  import { xxx, xxx, xxx } from "@nj/utils";
   ```
 
 - 使用

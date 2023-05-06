@@ -3,12 +3,17 @@
 - 安装 (`小提示：记得切换为私有源再进行安装`)
 
   ```sh
-  # 切换了忽略这一步
-  nrm use nnpm
+  # 安装并切换好了可忽略这一步
+  # 安装 nrm 管理镜像源
+  $ npm install -g nrm
+  # 添加私有镜像源
+  $ nrm add nnpm http://10.0.10.23:7001
+  # 使用私有镜像源
+  $ nrm use nnpm
   ```
 
   ```sh
-  npm i @nj/excel-export
+  $ npm i @nj/excel-export
   ```
 
 - 引入
@@ -17,7 +22,7 @@
   import * as Ex from "@nj/excel-export";
   ```
 
-- 使用（`将下面代码，放入导出事件函数中调用即可`）
+- 使用（`将下面代码，放入导出事件函数中，调用即可！更换为自己的数据源与列对应的 key`）
 
   ```javascript
   // 需要导出的数据

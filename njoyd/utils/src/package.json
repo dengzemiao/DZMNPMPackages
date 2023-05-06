@@ -1,5 +1,5 @@
 {
-  "name": "@nj/base",
+  "name": "@nj/utils",
   "version": "0.0.1",
   "description": "JS库基础工程",
   "main": "index.js",
