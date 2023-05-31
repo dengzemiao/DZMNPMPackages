@@ -13,13 +13,13 @@
   ```
 
   ```sh
-  $ npm i @nj/excel-export
+  $ npm i @nj/njoyd-excel-export
   ```
 
 - 引入
 
   ```javascript
-  import * as Ex from "@nj/excel-export";
+  import * as Ex from "@nj/njoyd-excel-export";
   ```
 
 - 使用（`将下面代码，放入导出事件函数中，调用即可！更换为自己的数据源与列对应的 key`）
