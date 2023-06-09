@@ -34,9 +34,9 @@
 
   # ggit 支持的子命令
   Commands:
-    push [options]   提交当前分支到远程仓库
-    merge [options]  提交当前分支到远程仓库
-    fix [options]    目前主要修复分支偏移问题
+    push [options]   提交当前分支到远程仓库，并可在提交完成后，自动切换到指定分支
+    merge [options]  提交当前分支到远程仓库，并合并到指定分支，再返回当前分支/指定分支
+    fix [options]    目前主要作用于修复分支偏移问题
     help [command]   display help for command
   ```
 

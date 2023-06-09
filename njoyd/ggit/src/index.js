@@ -103,11 +103,11 @@ function initData() {
   // 当前分支
   cb = execSilentCheck('git branch', { errMsg: '请检查当前项目是否支持了 Git 仓库！' }).stdout.match(/(?<=\* ).*/g)[0]
   // 本地分支列表
-  lbs = execSilentCheck('git branch').stdout.match(/(?<=  ).*?(?=[ |\n])/g)
+  lbs = execSilentCheck('git branch').stdout.match(/(?<=  ).*?(?=[ |\n])/g) || []
   // 把当前分支添加进去
   lbs.push(cb)
   // 远程分支列表
-  rbs = execSilentCheck('git branch -r').stdout.match(/(?<=\/).*?(?=[ |\n])/g)
+  rbs = execSilentCheck('git branch -r').stdout.match(/(?<=\/).*?(?=[ |\n])/g) || []
   // 当前分支存在远程分支
   isrb = rbs.includes(cb)
   // 移除修复分支
