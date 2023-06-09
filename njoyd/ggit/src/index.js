@@ -372,6 +372,10 @@ function delFixBranch(rbs, force) {
 // ================================================== 收尾工作
 
 program
+  // 配置
+  .option('-v', 'output the version number').action(() => {
+    console.log(version)
+  })
   // 版本信息
   .version(version)
   // 解析参数
