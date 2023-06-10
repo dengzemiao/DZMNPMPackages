@@ -68,7 +68,7 @@ function rmEnter(text) {
 // 判断值是否为true
 function isTure(value) {
   // 支持 1、'1'、'true'、'Ture'
-  return value == 1 || value == 'true' || value == 'Ture'
+  return value == 1 || value === true || value == 'true' || value == 'Ture'
 }
 
 // 输出
@@ -99,7 +99,7 @@ const fbPrefix = `ggit-fix-`
 // 初始化
 function initData() {
   // 检查是否安装了 git
-  execSilentCheck('git -v', { errMsg: '请检查 Git 是否安装！' })
+  execSilentCheck('git --version', { errMsg: '请检查 Git 是否安装！' })
   // 当前分支
   cb = execSilentCheck('git branch', { errMsg: '请检查当前项目是否支持了 Git 仓库！' }).stdout.match(/(?<=\* ).*/g)[0]
   // 本地分支列表
@@ -231,7 +231,7 @@ function pushCurrentBranch(option) {
     // 暂存代码
     const stashStdout = exec('git stash').stdout
     // 有内容暂存了
-    if (!(stashStdout.includes('没有要保存的本地修改') || stashStdout.includes('No local changes to save'))) {
+    if (stashStdout.includes('保存工作目录和索引状态') || stashStdout.includes('Saved working directory and index state')) {
       isStash = true
     }
     // 需要提交代码
@@ -372,11 +372,29 @@ function delFixBranch(rbs, force) {
 // ================================================== 收尾工作
 
 program
-  // 配置
-  .option('-v', 'output the version number').action(() => {
-    console.log(version)
-  })
   // 版本信息
   .version(version)
+  // 配置
+  .option('-v', 'output the version number')
+  // 事件
+  .action((opts, cmd) => {
+    // 版本号
+    if (opts.v) {
+      // 输出
+      console.log(version)
+    } else {
+      // 执行 git 命令
+      const args = cmd.args || []
+      // 数组有值
+      if (args.length) {
+        // git 命令拼接
+        const gc = `git ${args.join(' ')}`
+        // 输出日志
+        BgInfo(`========================================== ${gc}`)
+        // 移除当前分支
+        exec(gc)
+      }
+    }
+  })
   // 解析参数
   .parse(process.argv)

@@ -4,16 +4,37 @@
 
 - 博主就是一个喜欢用 `Git 命令` 的人，不太喜欢可视化的软件。所以使用 `Node` 对 `Git` 相关命令进行包装，做了一个自动化命令工具`【cggit】`。
 
+- 在自动化命令的基础上，还额外支持所有不带参的 `git` 原生命令，下面使用中有说明什么叫不带参命令。
+
 - 在执行 `cggit` 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
+
+  ![cmd.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec0cc33d78d24fe9ae96483d627b11fc~tplv-k3u1fbpfcp-watermark.image?)
 
 ## 二、安装
 
-- 请安装好 `Git` 、 `Node` 环境。
+- 请务必安装好 `Git` 、 `Node` 环境
 
-- 将 `cggit` 安装到全局，使用命令 `$ ggit xxx`。
+- 将 `cggit` 安装到全局，使用命令 `$ ggit xxx`
 
   ```sh
   $ npm i -g cggit
+  ```
+
+  ```sh
+  $ ggit -v
+  ```
+
+  如果安装失败，可将镜像切换到官方镜像尝试
+
+  ```sh
+  # 查看镜像
+  $ npm get registry
+
+  # 切换为官方镜像
+  $ npm config set registry https://registry.npmjs.org
+
+  # 切换为淘宝镜像
+  $ npm config set registry https://registry.npm.taobao.org
   ```
 
 - 可通过 `ggit -h` 查看帮助文档，查看支持子命令与参数
@@ -23,12 +44,12 @@
   ```
 
   ```sh
-
   # 输出
   Usage: ggit [options] [command]
 
   # ggit 支持的参数
   Options:
+    -v               output the version number
     -V, --version    output the version number
     -h, --help       display help for command
 
@@ -117,6 +138,28 @@
 
   ```sh
   $ ggit push -m '优化代码' -g 1.0
+  ```
+
+- 扩展性，除了支持上面 `3` 个子命令外，额外支持全部 `git` 命令，但是不支持带参数的命令：
+
+  ```sh
+  $ ggit add .               =       $ git add .
+  $ ggit commit -m '备注'     =       $ git commit -m '备注'
+  $ ggit pull                =       $ git pull
+  $ ggit push origin master  =       $ git push origin master
+  ....
+  # 基本所有不带参的 git 命令都支持
+  ```
+
+  ```sh
+  # 什么叫带参命令，例如：
+  $ git branch --set-upstream-to=origin/<分支> 5.0
+
+  # 如果确实要用，肯定不如直接使用 git，但是也能用，使用 '' 或 "" 包裹一下即可
+  # $ ggit '包裹的命令'
+  $ ggit 'branch --set-upstream-to=origin/<分支> 5.0'
+
+  # -- 或 - 开头的就是参数，不支持 git 的这种带参命令，不带参数的都支持
   ```
 
 ## 四、与 `Git` 原生命令对比
