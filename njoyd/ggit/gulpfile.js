@@ -48,8 +48,13 @@ gulp.task('move2', function () {
     .src('./src/README.md')
     .pipe(gulp.dest('./dist/'))
 })
+gulp.task('move3', function () {
+  return gulp
+    .src('./src/config.json')
+    .pipe(gulp.dest('./dist/'))
+})
 
 // 配置默认任务
 // module.exports.default = gulp.series('clean', 'build')
-gulp.task('default', gulp.series('clean', 'build', 'move1', 'move2'))
+gulp.task('default', gulp.series('clean', 'build', 'move1', 'move2', 'move3'))
 

@@ -4,6 +4,12 @@
 const shell = require('shelljs')
 // 处理输出
 const chalk = require('chalk')
+// 处理文件
+const fs = require('fs')
+// 路径
+const path = require('path')
+// 配置
+const config = require('./config.json')
 // 命令行辅助
 const { program } = require('commander')
 // 当前版本
@@ -84,7 +90,7 @@ const BgSuccess = (msg) => { console.log(chalk.bgGreenBright.bold(msg)) }
 const BgWarning = (msg) => { console.log(chalk.bgHex('#FFA500').bold(msg)) }
 
 // 当前分支
-var cb = ''
+var cb = (execSilent('git branch').stdout.match(/(?<=\* ).*/g) || [])[0]
 // 当前时间
 var ctime = nowDate()
 // 本地分支列表
@@ -95,13 +101,15 @@ var rbs = []
 var isrb = false
 // 修复分支前缀
 const fbPrefix = `ggit-fix-`
+// 配置文件路径
+const configPath = path.join(__dirname, 'config.json')
 
 // 初始化
 function initData() {
   // 检查是否安装了 git
   execSilentCheck('git --version', { errMsg: '请检查 Git 是否安装！' })
-  // 当前分支
-  cb = execSilentCheck('git branch', { errMsg: '请检查当前项目是否支持了 Git 仓库！' }).stdout.match(/(?<=\* ).*/g)[0]
+  // 检查是否支持 Git 仓库
+  execSilentCheck('git branch', { errMsg: '请检查当前项目是否支持了 Git 仓库！' })
   // 本地分支列表
   lbs = execSilentCheck('git branch').stdout.match(/(?<=  ).*?(?=[ |\n])/g) || []
   // 把当前分支添加进去
@@ -140,7 +148,7 @@ program
   .description('提交当前分支到远程仓库，并可在提交完成后，自动切换到指定分支')
   // 配置
   .option('-g, --go [branch]', '合并提交结束后，切换到指定分支')
-  .option('-s, --stash [type]', '使用 stash 暂存区方式合并代码，如果手动终止了脚本，需要使用 $ git pop 放出暂存区的代码，以免丢失', true)
+  .option('-s, --stash [type]', '使用 stash 暂存区方式合并代码，如果手动终止了脚本，需要使用 $ git pop 放出暂存区的代码，以免丢失', config.stash)
   .option('-m, --message [msg]', '提交日志信息', `${ctime} 提交优化`)
   // 事件
   .action((option) => {
@@ -171,10 +179,10 @@ program
   // 描述
   .description('提交当前分支到远程仓库，并合并到指定分支，再返回当前分支/指定分支')
   // 配置
-  .option('-t, --to [branch]', '合并到指定的分支', 'dev')
+  .option('-t, --to [branch]', '合并到指定的分支', config.to)
   .option('-g, --go [branch]', '合并提交结束后，切换到指定分支', cb)
-  .option('-s, --stash', '使用 stash 暂存区方式合并代码，如果手动终止了脚本，需要使用 $ git pop 放出暂存区的代码，以免丢失', true)
-  .option('-m, --message [msg]', '提交日志信息', `${ctime} 提交优化`)
+  .option('-s, --stash [type]', '使用 stash 暂存区方式合并代码，如果手动终止了脚本，需要使用 $ git pop 放出暂存区的代码，以免丢失', config.stash)
+  .option('-m, --message [msg]', '提交日志信息', ` 提交优化`)
   // 事件
   .action((option) => {
     // 输出日志
@@ -210,6 +218,60 @@ program
     fixBranch(option)
     // 执行完成
     BgSuccess('========================================== 修复结束 ==========================================')
+  })
+
+// ================================================== config
+
+program
+  // 命令
+  .command('cset')
+  // 描述
+  .description('修改默认配置')
+  // 配置
+  .option('-t, --to [branch]', '修改默认合并到指定的分支', config.to)
+  .option('-s, --stash [type]', '修改默认是否使用 stash 暂存区合并状态', config.stash)
+  // 事件
+  .action((option) => {
+    // 转成 json 字符串
+    const json = JSON.stringify(option, null, '\t')
+    // 写入配置
+    fs.writeFile(configPath, json, 'utf8', (err) => {
+      if (!err) {
+        // 成功
+        console.log(json)
+        console.log('Set Success!')
+      } else {
+        // 失败
+        console.log('修改失败')
+      }
+    })
+  })
+
+program
+  // 命令
+  .command('cget')
+  // 描述
+  .description('获取默认配置')
+  // 配置
+  .option('-t, --to', '获取默认合并到指定的分支')
+  .option('-s, --stash', '获取默认是否使用 stash 暂存区合并状态')
+  // 事件
+  .action((option) => {
+    // 获取所有字段
+    const keys = Object.keys(option || {})
+    // 字段列表有值
+    if (keys.length) {
+      // 组装输出
+      keys.forEach((key) => {
+        // 输出
+        console.log(config[key])
+      })
+    } else {
+      // 转成 json 字符串
+      const json = JSON.stringify(config, null, '\t')
+      // 输出所有配置
+      console.log(json)
+    }
   })
 
 // ================================================== 封装方法
