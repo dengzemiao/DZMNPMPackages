@@ -224,53 +224,62 @@ program
 
 program
   // 命令
-  .command('cset')
+  .command('config')
   // 描述
-  .description('修改默认配置')
+  .description('修改/查看默认配置')
   // 配置
-  .option('-t, --to [branch]', '修改默认合并到指定的分支', config.to)
-  .option('-s, --stash [type]', '修改默认是否使用 stash 暂存区合并状态', config.stash)
+  .option('set', '修改默认配置')
+  .option('get', '查看默认配置')
+  .option('-t, --to [branch]', '合并到指定的分支')
+  .option('-s, --stash [type]', '是否使用 stash 暂存区合并状态')
   // 事件
-  .action((option) => {
-    // 转成 json 字符串
-    const json = JSON.stringify(option, null, '\t')
-    // 写入配置
-    fs.writeFile(configPath, json, 'utf8', (err) => {
-      if (!err) {
-        // 成功
-        console.log(json)
-        console.log('Set Success!')
+  .action((option, cmd) => {
+    // 检查配置类型
+    if (cmd.args.includes('set')) {
+      // 获取所有字段
+      const keys = Object.keys(option || {})
+      // 字段列表有值
+      if (keys.length) {
+        // 组装输出
+        keys.forEach((key) => {
+          // 输出
+          config[key] = option[key]
+        })
       } else {
-        // 失败
-        console.log('修改失败')
+        // 提示
+        console.log('缺少需要配置的参数')
+        // 停止
+        exit(1)
       }
-    })
-  })
-
-program
-  // 命令
-  .command('cget')
-  // 描述
-  .description('获取默认配置')
-  // 配置
-  .option('-t, --to', '获取默认合并到指定的分支')
-  .option('-s, --stash', '获取默认是否使用 stash 暂存区合并状态')
-  // 事件
-  .action((option) => {
-    // 获取所有字段
-    const keys = Object.keys(option || {})
-    // 字段列表有值
-    if (keys.length) {
-      // 组装输出
-      keys.forEach((key) => {
-        // 输出
-        console.log(config[key])
-      })
-    } else {
       // 转成 json 字符串
       const json = JSON.stringify(config, null, '\t')
-      // 输出所有配置
-      console.log(json)
+      // 写入配置
+      fs.writeFile(configPath, json, 'utf8', (err) => {
+        if (!err) {
+          // 成功
+          console.log(json)
+          console.log('Set Success!')
+        } else {
+          // 失败
+          console.log('修改失败')
+        }
+      })
+    } else {
+      // 获取所有字段
+      const keys = Object.keys(option || {})
+      // 字段列表有值
+      if (keys.length) {
+        // 组装输出
+        keys.forEach((key) => {
+          // 输出
+          console.log(config[key])
+        })
+      } else {
+        // 转成 json 字符串
+        const json = JSON.stringify(config, null, '\t')
+        // 输出所有配置
+        console.log(json)
+      }
     }
   })
 

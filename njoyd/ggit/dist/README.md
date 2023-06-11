@@ -12,7 +12,15 @@
 
 ## 二、安装
 
-- 请务必安装好 `Git` 、 `Node` 环境
+- 请务必安装好 `Git` 、 `Node` 环境。
+
+  `Windows` 包管理工具：[winget](https://blog.csdn.net/zz00008888/article/details/131091717)
+
+  `Mac` 包管理工具：[homebrew](https://blog.csdn.net/zz00008888/article/details/113867051)
+
+  `Linux` 包管理工具：`Yum`
+
+  各平台都可以通过包管理工具快速安装 `Git` 、`Node`。
 
 - 将 `cggit` 安装到全局，使用命令 `$ ggit xxx`
 
@@ -82,26 +90,26 @@
 
 ## 三、使用
 
-- `ggit` 目前只支持的子命令，所有命令的参数都是可选，非必传。
+- `ggit` 目前支持的子命令列表大纲
 
   ```sh
-  # 提交代码
+  # 1、提交代码
   $ ggit push
 
-  # 合并代码
+  # 2、合并代码
   $ ggit merge
 
-  # 修复分支偏移，一般情况不需要，看到报错分支偏移时可以使用
+  # 3、修复分支偏移，一般情况不需要，看到报错分支偏移时可以使用
   $ ggit fix
 
-  # 修改默认配置
+  # 4、修改默认配置
   # 比如 merge 默认合并的是 dev 分支，如果想默认是的 master，则可以通过 cset 修改，这样就不需要在 $ ggit merge 时不需要指定 -t master，其他配置同理。
-  $ git cset -t master
+  $ ggit config set -t master
 
-  # 获取所有默认配置
-  $ git cset
+  # 5、获取所有默认配置
+  $ ggit config === $ ggit config get
   # 获取指定配置
-  $ git cset -t
+  $ ggit config -t === $ ggit config get -t
   ```
 
 - 子命令参数介绍
@@ -125,16 +133,12 @@
   | -g, --go \[branch]   | 合并提交结束后，切换到指定分支   | 分支名称                  | -                       |
   | -m, --message \[msg] | 提交日志信息                     | -                         | 当前时间 + 修复分支偏移 |
 
-  | `cset`              | 含义                                  | 支持传参                  | 默认值 |
-  | ------------------- | ------------------------------------- | ------------------------- | ------ |
-  | -t, --to \[branch]  | 修改默认合并到指定的分支              | 分支名称                  | dev    |
-  | -s, --stash \[type] | 修改默认是否使用 stash 暂存区合并状态 | 0/1/true/false/Ture/False | true   |
-
-  | `cget`      | 含义                                  | 支持传参           | 默认值 |
-  | ----------- | ------------------------------------- | ------------------ | ------ |
-  | -t, --to    | 获取默认合并到指定的分支              | 不能传参，只能取值 | -      |
-  | -s, --stash | 获取默认是否使用 stash 暂存区合并状态 | 不能传参，只能取值 | -      |
-  | 不带参数    | 获取所有配置信息                      | 不能传参，只能取值 | -      |
+  | `config`            | 含义                          | 支持传参                               | 默认值 |
+  | ------------------- | ----------------------------- | -------------------------------------- | ------ |
+  | set                 | 修改默认配置                  | 必传（例：`$ ggit config set -t dev`） | -      |
+  | get                 | 查看默认配置                  | 必传（例：`$ ggit config get -t`）     | dev    |
+  | -t, --to \[branch]  | 合并到指定的分支              | 分支名称                               | dev    |
+  | -s, --stash \[type] | 是否使用 stash 暂存区合并状态 | 0/1/true/false/Ture/False              | true   |
 
 - 子命令参数使用
 
@@ -215,8 +219,10 @@
   $ git checkout dev
   $ git pull origin dev
   $ git merge 开发分支
-  # 如果 merge 遇到冲突，解决后，继续执行一遍 merge 命令，也能完成提交代码，加上 -g 就能再次回到指定分支
-  # 也可以使用 push 命令上传
+
+  # 在这环节，ggit 如果 merge 遇到冲突，解决后，继续执行一遍 merge 命令，也能完成提交代码，加上 -g 就能再次回到指定分支
+  # 也可以使用 push 命令上传，原生命令就还的 add 敲一遍。
+
   $ git push origin dev
   $ git checkout 开发分支/指定分支
   ```
