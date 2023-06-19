@@ -15,17 +15,17 @@
   ```
 
   ```sh
-  $ npm i @nj/utils
+  $ npm i @nj-web/common-utils
   ```
 
 - 引入
 
   ```javascript
   // 方式一
-  import * as Utils from "@nj/utils";
+  import * as Utils from "@nj-web/common-utils";
 
   // 方式二
-  import { xxx, xxx, xxx } from "@nj/utils";
+  import { xxx, xxx, xxx } from "@nj-web/common-utils";
   ```
 
 - 使用
