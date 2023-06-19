@@ -7,7 +7,7 @@
  * @param {*} value 字符串
  * @return {*} true/false
  */
-export function isTitleCase(value) {
+export function IsTitleCase(value) {
   return /^[A-Z][A-z0-9]*$/.test(value)
 }
 
@@ -16,7 +16,7 @@ export function isTitleCase(value) {
  * @param {*} value 手机号码
  * @return {*} true/false
  */
-export function isPhoneNumber(value) {
+export function IsPhoneNumber(value) {
   return /^1[3456789]\d{9}$/.test(value)
 }
 
@@ -25,7 +25,7 @@ export function isPhoneNumber(value) {
  * @param {*} value 邮箱
  * @return {*} true/false
  */
-export function isEmail(value) {
+export function IsEmail(value) {
   return /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(value)
 }
 
@@ -34,7 +34,7 @@ export function isEmail(value) {
  * @param {*} value 身份证号码
  * @return {*} true/false
  */
-export function isIdentityCode(value) {
+export function IsIdentityCode(value) {
   return /^([1-9]\d{5}(18|19|20)\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3}[0-9Xx])|([1-9]\d{5}\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])\d{3})$/.test(value)
 }
 
@@ -43,7 +43,7 @@ export function isIdentityCode(value) {
  * @param {*} value 银行卡号
  * @return {*} true/false
  */
-export function isBankAccount(value) {
+export function IsBankAccount(value) {
   return /^[0-9a-zA-Z]{1,40}$/.test(value)
 }
 
@@ -52,7 +52,7 @@ export function isBankAccount(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isPositiveFloat(value) {
+export function IsPositiveFloat(value) {
   return /^\d+(?:\.\d{1,2})?$/.test(value)
 }
 
@@ -61,7 +61,7 @@ export function isPositiveFloat(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isPositiveNumber(value) {
+export function IsPositiveNumber(value) {
   return /^\d+(\.\d+)?$/.test(value)
 }
 
@@ -70,7 +70,7 @@ export function isPositiveNumber(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isPositiveInteger(value) {
+export function IsPositiveInteger(value) {
   return /^\d+$/.test(value)
 }
 
@@ -79,8 +79,16 @@ export function isPositiveInteger(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isPositiveIntegerPro(value) {
+export function IsPositiveIntegerPro(value) {
   return /^\+?[1-9][0-9]*$/.test(value)
+}
+/**
+ * @description: 非零负数校验
+ * @param {*} value 数字
+ * @return {*} true/false
+ */
+export function IsNegativeNumber(value) {
+  return /^(-\d+)(\.\d+)?$/.test(value)
 }
 
 /**
@@ -88,17 +96,8 @@ export function isPositiveIntegerPro(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isNegativeNumber(value) {
+export function IsNegativeNumberPro(value) {
   return /^(-\d+)(?:\.\d{1,2})?$/.test(value)
-}
-
-/**
- * @description: 非零负数校验
- * @param {*} value 数字
- * @return {*} true/false
- */
-export function isNegativeNumber(value) {
-  return /^(-\d+)(\.\d+)?$/.test(value)
 }
 
 /**
@@ -106,7 +105,7 @@ export function isNegativeNumber(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isNegativeInteger(value) {
+export function IsNegativeInteger(value) {
   return /^((-\d+)|(0+))$/.test(value)
 }
 
@@ -115,7 +114,7 @@ export function isNegativeInteger(value) {
  * @param {*} value 数字
  * @return {*} true/false
  */
-export function isNegativeIntegerPro(value) {
+export function IsNegativeIntegerPro(value) {
   return /^\-[1-9][0-9]*$/.test(value)
 }
 
@@ -129,7 +128,7 @@ export function isNegativeIntegerPro(value) {
  * @param {*} max 最大范围
  * @return {*} 随机数
  */
-// export function getRandomInt(min, max) {
+// export function RandomInt(min, max) {
 // }
 
 // ============================================================================================
@@ -141,8 +140,8 @@ export function isNegativeIntegerPro(value) {
  * @param {*} value 字符串
  * @return {*} 首字母大写的字符串
  */
-export function titleCase(value) {
-  return str.substring(0, 1).toUpperCase() + str.substring(1)
+export function TitleCase(value) {
+  return value.substring(0, 1).toUpperCase() + value.substring(1)
 }
 
 /**
@@ -150,12 +149,8 @@ export function titleCase(value) {
  * @param {*} value 手机号
  * @return {*} 处理后的手机号
  */
-export function titleCase(value) {
-  if (value) {
-    return value.replace(/(\d{3})\d*(\d{4})/, '$1****$2')
-  } else {
-    return ''
-  }
+export function PhoneEncryption(value) {
+  return value.replace(/(\d{3})\d*(\d{4})/, '$1****$2')
 }
 
 // ============================================================================================
@@ -167,7 +162,7 @@ export function titleCase(value) {
  * @param {*} path 额外在域名地址后面追加的路径
  * @return {*} 完整的当前域名地址
  */
-export function domainName(path) {
+export function DomainName(path) {
   return window.location.protocol + '//' + window.location.host + (path || '')
 }
 
@@ -176,7 +171,7 @@ export function domainName(path) {
  * @param {*} url 指定解析链接，默认为当前页面链接
  * @return {*} 参数对象
  */
-export function query(url = window.location.search) {
+export function Query(url = window.location.search) {
   // 参数
   const query = {}
   // 路径有值 && 包含 ？
@@ -202,7 +197,7 @@ export function query(url = window.location.search) {
  * @param {*} element 输入框标签
  * @return {*} 光标位置
  */
-export function inputPosition(element) {
+export function InputPosition(element) {
   let cursorPos = 0;
   if (document.selection) {
     // 兼容IE
@@ -218,7 +213,7 @@ export function inputPosition(element) {
 /**
  * @description: 触发 window.resize 事件
  */
-export function triggerWindowResizeEvent() {
+export function TriggerWindowResizeEvent() {
   const event = document.createEvent('HTMLEvents')
   event.initEvent('resize', true, true)
   event.eventType = 'message'
@@ -230,7 +225,7 @@ export function triggerWindowResizeEvent() {
  * @param {*} fn 回调
  * @param {*} delay 延迟时长 s
  */
-export function throttle(fn, delay = 500) {
+export function Throttle(fn, delay = 500) {
   let timer;
   return function () {
     const _this = this
@@ -253,7 +248,7 @@ export function throttle(fn, delay = 500) {
  * @param {*} fn 回调
  * @param {*} delay 延迟时长 s
  */
-export function debounce(fn, delay = 500) {
+export function Debounce(fn, delay = 500) {
   let timer
   return function () {
     // 当前函数的 this
@@ -283,7 +278,7 @@ export function debounce(fn, delay = 500) {
  * @param {*} key Key规则
  * @return {*}
  */
-export function value(json, key) {
+export function Value(json, key) {
   // 当前值
   var value = undefined
   // 是否有值
@@ -330,7 +325,7 @@ export function value(json, key) {
  * @param {*} path 文件路径
  * @return {*} 文件后缀
  */
-export function fileExtension(path) {
+export function FileExtension(path) {
   // 后缀类型
   var type = ''
   // 路径有值
