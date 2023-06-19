@@ -296,7 +296,7 @@ function pushCurrentBranch(option) {
   // 是否使用暂存区
   if (isTure(option.stash)) {
     // 输出日志
-    BgWarning(`==== 注意：使用 stash 暂存代码，如果手动终止了脚本，需检查是否执行了 $ git stash pop 命令，没有执行需要手动执行放出暂存区的代码，以免丢失！`)
+    BgWarning(`==== 注意：使用 stash 暂存代码，在有保存本地内容的情况下，如果手动终止了脚本，需检查是否执行了 $ git stash pop 命令，没有执行需要手动执行放出暂存区的代码，以免丢失！`)
     // 输出日志
     BgInfo(`========================================== git stash`)
     // 暂存代码
