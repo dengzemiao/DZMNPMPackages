@@ -47,33 +47,38 @@ function ExcelExport(sheets, beforeWrite, fileName, fileSuffix) {
     var rowCount = dataSource.length
 
     // 行标题数据
-    // EXRow 数据
-    var EXRow = []
-    // 通过便利列数据获得字段数据
-    columns.forEach((column, columnIndex) => {
-      // 获取 keys
-      var keys = Object.keys(column.style || {})
-      // 样式是否需要支持标题栏
-      var supportTitle = false
-      if (keys.includes('supportTitle')) { supportTitle = column.style.supportTitle }
-      // 默认样式
-      var defaultStyle = {}
-      if (keys.includes('colWidth')) { defaultStyle = { colWidth: column.style.colWidth } }
-      // 单元格数据
-      var itemData = {
-        data: column.name,
-        style: supportTitle ? column.style : defaultStyle
-      }
-      // 准备将数据加入 Row 中
-      if (beforeWrite) { itemData = beforeWrite(itemData, column.field, column, sheetIndex, EXRows.length, columnIndex, rowCount, columnCount) }
-      // 有值 && 不隐藏
-      if (itemData && !itemData.hide) {
-        // 加入到行列表
-        EXRow.push(itemData)
-      }
-    })
-    // 放到 EXRows 里面
-    EXRows.push(EXRow)
+    // 是否所有标题都为空
+    const isEmpty = columns.every(column => !column.name)
+    // 标题存在有值
+    if (!isEmpty) {
+      // EXRow 数据
+      var EXRow = []
+      // 通过便利列数据获得字段数据
+      columns.forEach((column, columnIndex) => {
+        // 获取 keys
+        var keys = Object.keys(column.style || {})
+        // 样式是否需要支持标题栏
+        var supportTitle = false
+        if (keys.includes('supportTitle')) { supportTitle = column.style.supportTitle }
+        // 默认样式
+        var defaultStyle = {}
+        if (keys.includes('colWidth')) { defaultStyle = { colWidth: column.style.colWidth } }
+        // 单元格数据
+        var itemData = {
+          data: column.name,
+          style: supportTitle ? column.style : defaultStyle
+        }
+        // 准备将数据加入 Row 中
+        if (beforeWrite) { itemData = beforeWrite(itemData, column.field, column, sheetIndex, EXRows.length, columnIndex, rowCount, columnCount) }
+        // 有值 && 不隐藏
+        if (itemData && !itemData.hide) {
+          // 加入到行列表
+          EXRow.push(itemData)
+        }
+      })
+      // 放到 EXRows 里面
+      EXRows.push(EXRow)
+    }
 
     // 便利数据源
     dataSource.forEach((item) => {
