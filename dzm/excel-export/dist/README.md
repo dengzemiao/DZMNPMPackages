@@ -71,7 +71,7 @@
 
   // 导出数据
   Ex.ex(sheets);
-  // 自定义
+  // 自定义 (除了 sheets，都是非必填，文件名可以传 null)
   // Ex.ex(sheets, (item, field, json, sheetIndex, row, col, rowCount, colCount) => {
   //   return item
   // }, '指定文件名', 'xls')
@@ -286,7 +286,9 @@
   // 文件后缀类型
   export enum FileSuffix {
     xls = 'xls',
-    xlsx = 'xlsx'
+    xlsx = 'xlsx',
+    csv = 'csv',
+    txt = 'txt'
   }
 
   // Column 约束

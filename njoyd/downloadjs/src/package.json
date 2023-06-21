@@ -1,0 +1,16 @@
+{
+  "name": "@nj-web/downloadjs",
+  "version": "0.0.1",
+  "description": "简化前端下载功能，支持链接后台下载、代理下载、Blob数据下载，针对代理下载灵活使用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

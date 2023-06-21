@@ -1,0 +1,1 @@
+const name="base",age=18;function baseFunc(e,n){return`名字：${e}，年龄：`+n}export{name,age,baseFunc};
