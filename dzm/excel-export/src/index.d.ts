@@ -41,10 +41,10 @@ export enum FileSuffix {
 
 // Column 约束
 export interface Column {
-  // 列名
-  name: string;
   // 列 key
   field: string;
+  // 列名
+  name?: string;
   // 列数据类型
   dataType?: DataType | string;
   // 列样式
@@ -54,7 +54,7 @@ export interface Column {
 // Sheet 约束
 export interface Sheet {
   // 名字
-  name: string;
+  name?: string;
   // 数据源
   data: JsonArray;
   // 列对应的 名称 key，用于从数据源中获取数据

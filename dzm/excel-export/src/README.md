@@ -38,7 +38,7 @@
   // Excel 列头
   const columns = [
     {
-      name: "ID",
+      name: "ID", // 非必填，如果不需要第一行有标题，则所有列 name 全空就行
       field: "id",
     },
     {
@@ -58,7 +58,7 @@
   // sheets 数据源
   const sheets = [
     {
-      name: "Sheet1",
+      name: "Sheet1", // 非必填
       data: dataSource,
       columns: columns,
     },
