@@ -58,11 +58,11 @@
   # ggit 支持的参数
   Options:
     -V, --version    output the version number
-    -v                output the version number
-    -d [branch]       移除指定本地分支
-    -dr [branch]      移除指定远程分支
-    -b [branch]       以当前分支为基础，新建分支
-    -g [branch]       切换到指定分支，如本地没有会拉取远程分支
+    -v               output the version number
+    -d [branch]      移除指定本地分支
+    -dr [branch]     移除指定远程分支
+    -b [branch]      以当前分支为基础，新建分支
+    -g [branch]      切换到指定分支，如本地没有会拉取远程分支
     -h, --help       display help for command
 
   # ggit 支持的子命令
