@@ -1,7 +1,7 @@
 /**
  * @description: 代理对象
  */
-export var DLProxy: { [key: string]: Array };
+export type DLProxy = { [key: string]: Array<string> };
 
 /**
  * @description: 配置代理
