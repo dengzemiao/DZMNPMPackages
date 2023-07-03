@@ -376,17 +376,19 @@ function ExportExcel(sheets, fileName, fileSuffix) {
       var EXSheetRowCellString = ''
       // 便利 Cell
       row.forEach((cell, cellIndex) => {
+        // 样式对象
+        var style = cell.style || {}
         // 设置为 0 || 有值
-        if (cell.style.rowHeight === 0 || !!cell.style.rowHeight) {
+        if (style.rowHeight === 0 || !!style.rowHeight) {
           // 更换 Row 头部
           EXSheetRowHeadString = `<Row ss:Height="${cell.style.rowHeight}">`
         }
         // 0 行时获取所有列宽
         if (rowIndex === 0) {
           // 设置为 0 || 有值
-          if (cell.style.colWidth === 0 || !!cell.style.colWidth) {
+          if (style.colWidth === 0 || !!style.colWidth) {
             // 更换 Row 头部
-            EXSheetColumnString += `<Column ss:Index="${cellIndex + 1}" ss:AutoFitWidth="0" ss:Width="${cell.style.colWidth}"/>`
+            EXSheetColumnString += `<Column ss:Index="${cellIndex + 1}" ss:AutoFitWidth="0" ss:Width="${style.colWidth}"/>`
           }
         }
         // 组合 StyleID
