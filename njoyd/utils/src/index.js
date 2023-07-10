@@ -171,13 +171,15 @@ export function DomainName(path) {
  * @param {*} url 指定解析链接，默认为当前页面链接
  * @return {*} 参数对象
  */
-export function Query(url = window.location.search) {
+export function QueryAll(url) {
+  // 链接
+  const str = url || window.location.search
   // 参数
   const query = {}
   // 路径有值 && 包含 ？
-  if (url && url.includes('?')) {
+  if (str && str.includes('?')) {
     // 参数字符串
-    const queryString = url.split('?')[1]
+    const queryString = str.split('?')[1]
     // 分割参数
     const pairs = queryString.split('&')
     // 便利解析
@@ -190,6 +192,17 @@ export function Query(url = window.location.search) {
   }
   // 返回
   return query
+}
+
+/**
+ * @description: 获取页面链接指定参数，解析链接附带的参数，默认为当前页面链接
+ * @param {*} key 指定参数key
+ * @param {*} url 指定解析链接，默认为当前页面链接
+ * @return {*} 参数对象
+ */
+export function Query(key, url) {
+  // 返回指定参数
+  return QueryAll(url)[key]
 }
 
 /**
