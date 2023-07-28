@@ -1,4 +1,4 @@
-# downjs
+# dlhelper
 
 ## 一、简介
 
@@ -9,13 +9,13 @@
 - 安装
 
   ```sh
-  $ npm i downjs
+  $ npm i dlhelper
   ```
 
 - 引入
 
   ```javascript
-  import * as dl from "downjs";
+  import * as dl from "dlhelper";
   ```
 
 - `案例`：后台下载
@@ -48,7 +48,7 @@
 
     ```javascript
     // 引入
-    import * as dl from 'downjs'
+    import * as dl from 'dlhelper'
     // 配置代理
     dl.setProxy({
       // 代理标识: [代理地址, 代理地址]

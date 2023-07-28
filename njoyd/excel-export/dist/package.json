@@ -1,6 +1,6 @@
 {
   "name": "@nj/njoyd-excel-export",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "该库是一个轻量级的 JavaScript 库，帮助开发人员轻松地将数据导出到 Excel 文件中。它具有简单易用的 API，支持 XLSX、XLS、CSV、TXT 格式导出。此外还提供了丰富的样式配置选项，使用户可以自定义导出文件的格式和样式，能为你提供高效、可靠、美观的数据导出功能。",
   "main": "index.js",
   "scripts": {
