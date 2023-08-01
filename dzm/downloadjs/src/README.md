@@ -53,6 +53,7 @@
     dl.setProxy({
       // 代理标识: [代理地址, 代理地址]
       // 这么配置，当使用 dl.dlProxy() 传入 url 时，可传入 '/download/test.png'、'https://www.baidu1.com/test.png'、'https://www.baidu2.com/test.png', 全链接的会自动匹配代理地址，匹配成功替换成对应的代理标识
+      // 后面的数组参数主要是为了存放正式地址、测试地址、预发布地址等
       '/download/': ['https://www.baidu2.com/', ...],
       '/download': ['https://www.baidu1.com', ...],
       '/test/': [],
