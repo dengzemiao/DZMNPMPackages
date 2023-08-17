@@ -35,9 +35,9 @@ export enum FileSuffix {
 // Column 约束
 export interface Column {
   // 列名
-  name: string,
+  name?: string,
   // 列 key
-  field: string,
+  field?: string,
   // 列数据类型
   dataType?: DataType | string,
   // 列样式

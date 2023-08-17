@@ -173,26 +173,29 @@ function ExportChildren(rows, columns, children, beforeWrite, sheetIndex, rowCou
 function GetColumnData(itemJson, columnField) {
   // 单元格数据
   var columnData = undefined
-  // 分割字段 例如 info.avatar
-  var fields = columnField.split('.')
-  // 有多层级字段
-  if (fields.length > 1) {
-    // 方便循环获取
-    columnData = itemJson
-    // 当前索引
-    var index = 0
-    // 循环得到单元格数据
-    while (index <= (fields.length - 1)) {
-      // 取得当前层字段数据
-      columnData = columnData[`${fields[index]}`]
-      // 如果取得空，则停止
-      if (columnData === undefined) { break }
-      // 取到值则继续
-      index += 1
+  // 列字段有值
+  if (columnField) {
+    // 分割字段 例如 info.avatar
+    var fields = columnField.split('.')
+    // 有多层级字段
+    if (fields.length > 1) {
+      // 方便循环获取
+      columnData = itemJson
+      // 当前索引
+      var index = 0
+      // 循环得到单元格数据
+      while (index <= (fields.length - 1)) {
+        // 取得当前层字段数据
+        columnData = columnData[`${fields[index]}`]
+        // 如果取得空，则停止
+        if (columnData === undefined) { break }
+        // 取到值则继续
+        index += 1
+      }
+    } else {
+      // 如果就一个字段，直接获取即可
+      columnData = itemJson[columnField]
     }
-  } else {
-    // 如果就一个字段，直接获取即可
-    columnData = itemJson[columnField]
   }
   // 返回单元格数据
   return columnData
@@ -376,19 +379,17 @@ function ExportExcel(sheets, fileName, fileSuffix) {
       var EXSheetRowCellString = ''
       // 便利 Cell
       row.forEach((cell, cellIndex) => {
-        // 样式对象
-        var style = cell.style || {}
         // 设置为 0 || 有值
-        if (style.rowHeight === 0 || !!style.rowHeight) {
+        if (cell.style.rowHeight === 0 || !!cell.style.rowHeight) {
           // 更换 Row 头部
           EXSheetRowHeadString = `<Row ss:Height="${cell.style.rowHeight}">`
         }
         // 0 行时获取所有列宽
         if (rowIndex === 0) {
           // 设置为 0 || 有值
-          if (style.colWidth === 0 || !!style.colWidth) {
+          if (cell.style.colWidth === 0 || !!cell.style.colWidth) {
             // 更换 Row 头部
-            EXSheetColumnString += `<Column ss:Index="${cellIndex + 1}" ss:AutoFitWidth="0" ss:Width="${style.colWidth}"/>`
+            EXSheetColumnString += `<Column ss:Index="${cellIndex + 1}" ss:AutoFitWidth="0" ss:Width="${cell.style.colWidth}"/>`
           }
         }
         // 组合 StyleID
