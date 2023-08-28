@@ -1,0 +1,1 @@
+var xlsx=require("./lib/xlsx"),csv=require("./lib/csv");function parse(s,x){var e;s?"csv"===(e=(e=s.name.split("."))[e.length-1])?csv.csvJson(s,x):"xls"===e||"xlsx"===e?xlsx.xlsxJson(s,x):x(2,[]):x(4,[])}module.exports={parse:parse};
