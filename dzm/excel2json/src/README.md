@@ -29,8 +29,8 @@
           // 文件对象
           const file = e.target.files[0];
           // 转成成 json
-          ex2json.parse(file, (code, sheets) => {
-            console.log(code, sheets);
+          ex2json.parse(file, (code, res) => {
+            console.log(code, res);
           });
         },
       },
