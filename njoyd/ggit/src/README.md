@@ -48,7 +48,7 @@
   $ npm config set registry https://registry.npmjs.org
 
   # 切换为淘宝镜像
-  $ npm config set registry https://registry.npm.taobao.org
+  $ npm config set registry https://registry.npmmirror.com
   ```
 
 - 可通过 `ggit -h` 查看帮助文档，查看支持子命令与参数
