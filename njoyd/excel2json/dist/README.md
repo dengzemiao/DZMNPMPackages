@@ -1,17 +1,25 @@
-# ex2json
-
 ## 一、使用
 
-- 安装
+- 安装 (`小提示：记得切换为私有源再进行安装`)
 
   ```sh
-  $ npm i ex2json
+  # 安装并切换好了可忽略这一步
+  # 安装 nrm 管理镜像源
+  $ npm install -g nrm
+  # 添加私有镜像源
+  $ nrm add nnpm http://10.0.10.23:7001
+  # 使用私有镜像源
+  $ nrm use nnpm
+  ```
+
+  ```sh
+  $ npm i @nj/njoyd-ex2json
   ```
 
 - 引入
 
   ```js
-  import ex2json from "ex2json";
+  import ex2json from "@nj/njoyd-ex2json";
   ```
 
 - 使用

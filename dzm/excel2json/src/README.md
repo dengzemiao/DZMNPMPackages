@@ -37,3 +37,19 @@
     };
   </script>
   ```
+
+- 可能会遇到的问题：
+
+  - `Vue3` 报错 [Module not found: Error: Can't resolve 'fs' in 'xxx'](https://blog.csdn.net/CatchLight/article/details/133852779)，可在 `vue.config.js` 中新增以下配置即可：
+
+    ```js
+    const { defineConfig } = require('@vue/cli-service')
+    module.exports = defineConfig({
+      transpileDependencies: ...,
+      devServer: { ... },
+      // 下面这段配置添加上即可
+      configureWebpack: {
+        resolve: { fallback: { fs: false } }
+      }
+    })
+    ```
