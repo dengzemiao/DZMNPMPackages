@@ -1,5 +1,5 @@
 {
-  "name": "@nj/ggit",
+  "name": "@netjoy/ggit",
   "version": "1.0.0",
   "description": "一个基于 node 将 Git 提交、合并命令简化的小工具，一行命令搞定提交、合并、分支偏移。",
   "bin": {

@@ -4,7 +4,7 @@
 
 - 所以使用 `Node` 对 `Git` 相关命令进行包装，做了一个自动化命令工具，在自动化命令的基础上，还额外支持所有不带参的 `git` 原生命令，下面使用中有说明什么叫不带参命令。
 
-- 在执行 `@nj/ggit` 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
+- 在执行 `@netjoy/ggit` 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
 
 ## 二、安装
 
@@ -18,20 +18,10 @@
 
   各平台都可以通过包管理工具快速安装 `Git` 、`Node`。
 
-- 将 `@nj/ggit` 安装到全局 (`小提示：记得切换为私有源再进行安装`)
+- 将 `ggit` 安装到全局
 
   ```sh
-  # 安装并切换好了可忽略这一步
-  # 安装 nrm 管理镜像源
-  $ npm install -g nrm
-  # 添加私有镜像源
-  $ nrm add nnpm http://10.0.10.23:7001
-  # 使用私有镜像源
-  $ nrm use nnpm
-  ```
-
-  ```sh
-  $ npm i -g @nj/ggit
+  $ npm i -g @netjoy/ggit
   ```
 
   ```sh
@@ -48,7 +38,7 @@
   $ npm config set registry https://registry.npmjs.org
 
   # 切换为淘宝镜像
-  $ npm config set registry https://registry.npm.taobao.org
+  $ npm config set registry https://registry.npmmirror.com
   ```
 
 - 可通过 `ggit -h` 查看帮助文档，查看支持子命令与参数

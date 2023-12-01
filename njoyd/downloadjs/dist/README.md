@@ -1,31 +1,19 @@
-# @nj-web/downloadjs
-
 ## 一、简介
 
 - 一个简化前端下载功能的 js 辅助库，支持链接后台下载、代理下载、Blob 数据下载，针对代理下载灵活使用。
 
 ## 二、使用
 
-- 安装 (`小提示：记得切换为私有源再进行安装`)
+- 安装
 
   ```sh
-  # 安装并切换好了可忽略这一步
-  # 安装 nrm 管理镜像源
-  $ npm install -g nrm
-  # 添加私有镜像源
-  $ nrm add nnpm http://10.0.10.23:7001
-  # 使用私有镜像源
-  $ nrm use nnpm
-  ```
-
-  ```sh
-  $ npm i @nj-web/downloadjs
+  $ npm i @netjoy/dlhelper
   ```
 
 - 引入
 
   ```javascript
-  import * as dl from "@nj-web/downloadjs";
+  import * as dl from "@netjoy/dlhelper";
   ```
 
 - `案例`：后台下载
@@ -58,7 +46,7 @@
 
     ```javascript
     // 引入
-    import * as dl from '@nj-web/downloadjs'
+    import * as dl from '@netjoy/dlhelper'
     // 配置代理
     dl.setProxy({
       // 代理标识: [代理地址, 代理地址]

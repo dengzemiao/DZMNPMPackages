@@ -1,6 +1,6 @@
 {
-  "name": "@nj-web/downloadjs",
-  "version": "1.0.0",
+  "name": "@netjoy/dlhelper",
+  "version": "1.0.2",
   "description": "一个简化前端下载功能的 js 辅助库，支持链接后台下载、代理下载、Blob数据下载，针对代理下载灵活使用",
   "main": "index.js",
   "scripts": {

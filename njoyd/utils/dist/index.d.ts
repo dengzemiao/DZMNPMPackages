@@ -145,7 +145,7 @@ export function GetQueryAll(url?: string): {};
  * @description: 获取页面链接指定参数，解析链接附带的参数，默认为当前页面链接
  * @param {*} key 指定参数key
  * @param {*} url 指定解析链接，默认为当前页面链接
- * @return {*} 参数对象
+ * @return {*} 指定参数值
  */
 export function GetQuery(key: string, url?: string): any;
 
