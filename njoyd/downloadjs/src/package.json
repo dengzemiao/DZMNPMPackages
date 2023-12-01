@@ -1,13 +1,13 @@
 {
   "name": "@nj-web/downloadjs",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "一个简化前端下载功能的 js 辅助库，支持链接后台下载、代理下载、Blob数据下载，针对代理下载灵活使用",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "netjoy",
   "license": "ISC",
   "dependencies": {
   },
