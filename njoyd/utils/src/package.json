@@ -1,13 +1,13 @@
 {
   "name": "@nj-web/common-utils",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "基础 utils 集合，快捷校验数字、手机、邮箱等，还包含获取页面参数、域名、节流、防抖、首字母大写、手机号加星等函数方法",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "netjoy",
   "license": "ISC",
   "dependencies": {
   },

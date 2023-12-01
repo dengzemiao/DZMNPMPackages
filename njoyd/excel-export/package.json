@@ -3,6 +3,7 @@
     "test": "cd src/ && npm link",
     "build": "gulp",
     "push": "npm run build && cd dist/ && npm publish",
+    "apush": "npm run build && cd dist/ && npm publish --access public",
     "push:cnj": "nrm use cnj && npm run build && cd dist/ && npm publish",
     "push:npm": "nrm use npm && npm run build && cd dist/ && npm publish"
   },

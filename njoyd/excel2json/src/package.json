@@ -1,13 +1,13 @@
 {
   "name": "@nj/njoyd-ex2json",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "基于 js 编写的轻量级辅助库，将 .xlsx | .xls | .csv 文件内的数据转成 json 数据，方便数据处理，表单数据上传服务器。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["excel2json", "csv2json"],
-  "author": "",
+  "author": "netjoy",
   "license": "ISC",
   "dependencies": {
   },
