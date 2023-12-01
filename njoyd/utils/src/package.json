@@ -1,6 +1,6 @@
 {
   "name": "@netjoy/common-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基础 utils 集合，快捷校验数字、手机、邮箱等，还包含获取页面参数、域名、节流、防抖、首字母大写、手机号加星等函数方法",
   "main": "index.js",
   "scripts": {
