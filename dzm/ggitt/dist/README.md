@@ -10,7 +10,7 @@
 
 - 在执行 [ggitt](https://github.com/dengzemiao/ggitt) 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
 
-  ![cmd.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec0cc33d78d24fe9ae96483d627b11fc~tplv-k3u1fbpfcp-watermark.image?)
+  ![cmd.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4e7ead5eb04d47f89db7ae175a60118e~tplv-k3u1fbpfcp-jj-mark:3024:0:0:0:q75.awebp#?w=1510&h=1046&s=300704&e=png&b=1e1e1e)
 
 ## 二、安装
 
@@ -76,6 +76,7 @@
     -br               列出远程分支
     -ba               列出所有分支
     -g, --go [branch] 切换到指定分支，如本地没有会拉取远程分支
+    -c, --checkout [b]切换到指定分支，如本地没有会拉取远程分支，跟 -g 一样效果，为了习惯
     -h, --help        display help for command
 
   # ggit 支持的子命令

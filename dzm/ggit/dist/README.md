@@ -76,6 +76,7 @@
     -br               列出远程分支
     -ba               列出所有分支
     -g, --go [branch] 切换到指定分支，如本地没有会拉取远程分支
+    -c, --checkout [b]切换到指定分支，如本地没有会拉取远程分支，跟 -g 一样效果，为了习惯
     -h, --help        display help for command
 
   # ggit 支持的子命令
