@@ -1,14 +1,14 @@
 ## 一、简介
 
-- `cggit` 更名为 [ggitt](https://www.npmjs.com/package/ggitt)，请优先安装最新包名，使用指令不变！
+- 之前的 `cggit` 更名为 `ggitt`，后续主要更新该包，请优先使用该包名。
 
 - 在开发过程中，习惯用 `Git 命令` 提交、合并代码的小伙伴会发现，经常在重复的敲提交代码就算了，尤其是测试环节，修好之后，来回切换提交、合并操作，所以这也是很多小伙伴选择用可视化操作的原因。
 
-- 博主就是一个喜欢用 `Git 命令` 的人，不太喜欢可视化的软件。所以使用 `Node` 对 `Git` 相关命令进行包装，做了一个自动化命令工具 [cggit](https://github.com/dengzemiao/ggitt)。附 [GitHub 地址](https://github.com/dengzemiao/ggitt)！
+- 博主就是一个喜欢用 `Git 命令` 的人，不太喜欢可视化的软件。所以使用 `Node` 对 `Git` 相关命令进行包装，做了一个自动化命令工具 [ggitt](https://github.com/dengzemiao/ggitt)。附 [GitHub 地址](https://github.com/dengzemiao/ggitt)！
 
 - 在自动化命令的基础上，还额外支持所有不带参的 `git` 原生命令，下面使用中有说明什么叫不带参命令。
 
-- 在执行 [cggit](https://github.com/dengzemiao/ggitt) 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
+- 在执行 [ggitt](https://github.com/dengzemiao/ggitt) 自动化命令过程中遇到冲突，解决后，可继续执行一遍相关命令 `push， merge` 完成提交。
 
   ![cmd.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec0cc33d78d24fe9ae96483d627b11fc~tplv-k3u1fbpfcp-watermark.image?)
 
@@ -24,10 +24,10 @@
 
   各平台都可以通过包管理工具快速安装 `Git` 、`Node`。
 
-- 将 `cggit` 安装到全局
+- 将 `ggitt` 安装到全局
 
   ```sh
-  $ npm i -g cggit
+  $ npm i -g ggitt
   ```
 
   使用命令：两种指令方式都可以 `$ ggit xxx` 与 `$ gitt xxx`
